@@ -14,7 +14,14 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
     try {
         await client.connect();
-        const technologyCollection = client.db('the_delta_times').collection('technology')
+        const technologyCollection = client.db('the_delta_times').collection('latest_news')
+
+        app.get('/latest', async (req, res) => {
+            const query = {};
+            const cursor = technologyCollection.find(query);
+            const latestNews = await cursor.toArray();
+            res.send(latestNews);
+        })
     }
     finally {
 
