@@ -2,10 +2,13 @@ const { v4: uuidv4 } = require("uuid")
 const News = require("../models/user.model")
 
 
-const getAllUsers = (req, res) => {
-    res.status(200).json({
-        message: "All users",
-    });
+const getAllUsers = async (req, res) => {
+    try {
+        const news = await News.find();
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
 };
 
 
@@ -31,7 +34,7 @@ const createUser = async (req, res) => {
         await newNews.save();
         res.status(201).json(newNews);
     } catch (error) {
-        console.log(error.message);
+        res.status(500).send(error.message);
     }
 };
 
