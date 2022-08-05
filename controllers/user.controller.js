@@ -17,6 +17,11 @@ const getOneUser = (req, res) => {
         message: "Get one user",
     });
 };
+const getManyUser = (req, res) => {
+    res.status(201).json({
+        message: "Get many  user",
+    });
+};
 
 
 const createUser = async (req, res) => {
@@ -52,4 +57,4 @@ const deleteUser = (req, res) => {
     });
 };
 
-module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser };
+module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, getManyUser };
