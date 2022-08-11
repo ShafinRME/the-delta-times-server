@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// Heroku deploy hocche na
 
 const newsSchema = mongoose.Schema({
     id: {
