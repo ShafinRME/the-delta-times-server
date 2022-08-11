@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
-
-const newsSchema = mongoose.Schema({
+const adminNewsSchema = mongoose.Schema({
     id: {
         type: String,
         require: true
@@ -34,7 +33,6 @@ const newsSchema = mongoose.Schema({
         type: String,
         require: true
     },
-
 });
 
-module.exports = mongoose.model("News", newsSchema);
+module.exports = mongoose.model("AdminNews", adminNewsSchema);
