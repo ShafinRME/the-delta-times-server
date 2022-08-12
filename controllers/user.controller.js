@@ -2,7 +2,7 @@ const { v4: uuidv4 } = require("uuid")
 const News = require("../models/user.model")
 
 
-const getAllUsers = async (req, res) => {
+const getAllNews = async (req, res) => {
     try {
         const news = await News.find();
         res.status(200).json(news);
@@ -42,6 +42,15 @@ const getHealthNews = async (req, res) => {
 const getSportsNews = async (req, res) => {
     try {
         const query = { category: "Sports" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getBusinessNews = async (req, res) => {
+    try {
+        const query = { category: "Business" }
         const news = await News.find(query);
         res.status(200).json(news);
     } catch (error) {
@@ -110,4 +119,4 @@ const deleteUser = async (req, res) => {
     }
 };
 
-module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, getManyUser, getSportsNews, getInternationalNews, getTechNews, getHealthNews };
+module.exports = { getAllNews, getOneUser, createUser, updateUser, deleteUser, getManyUser, getSportsNews, getInternationalNews, getTechNews, getHealthNews, getBusinessNews };
