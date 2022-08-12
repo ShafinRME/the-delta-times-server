@@ -12,6 +12,44 @@ const getAllUsers = async (req, res) => {
 };
 
 
+const getTechNews = async (req, res) => {
+    try {
+        const query = { category: "Tech" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getInternationalNews = async (req, res) => {
+    try {
+        const query = { category: "International" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getHealthNews = async (req, res) => {
+    try {
+        const query = { category: "Health" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getSportsNews = async (req, res) => {
+    try {
+        const query = { category: "Sports" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+
+
 const getOneUser = (req, res) => {
     res.status(200).json({
         message: "Get one user",
@@ -72,4 +110,4 @@ const deleteUser = async (req, res) => {
     }
 };
 
-module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, getManyUser };
+module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, getManyUser, getSportsNews, getInternationalNews, getTechNews, getHealthNews };
