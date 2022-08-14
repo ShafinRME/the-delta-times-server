@@ -1,13 +1,13 @@
 const { v4: uuidv4 } = require("uuid");
 const AdminNews = require("../models/admin.news.model");
 
-const getAllNews = async (req, res) => {
+const getAllAdminNews = async (req, res) => {
     res.status(201).json({
         message: "Get many  user",
     });
 }
 
-const createNews = async (req, res) => {
+const createAdminNews = async (req, res) => {
     try {
         const adminNews = new AdminNews({
             id: uuidv4(),
@@ -44,4 +44,4 @@ const updateAdminNews = async (req, res) => {
 
 };
 
-module.exports = { getAllNews, createNews, updateAdminNews };
+module.exports = { getAllAdminNews, createAdminNews, updateAdminNews };
