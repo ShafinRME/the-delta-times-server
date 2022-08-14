@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require("uuid");
-const AdminNews = require("../models/admin.news");
+const AdminNews = require("../models/admin.news.model");
 
 const getAllNews = async (req, res) => {
     res.status(201).json({
