@@ -2,14 +2,16 @@ const express = require("express");
 const cors = require("cors");
 require("./config/db");
 
-const userRouter = require("./routes/user.route");
+const moderatorRouter = require("./routes/moderator.route");
+const contactRouter = require("./routes/contact.route");
 
 const app = express();
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/api/news", userRouter);
+app.use("/api/news", moderatorRouter);
+app.use("/api/contacts", contactRouter);
 
 // api/users : GET
 // api/users/:id : GET
