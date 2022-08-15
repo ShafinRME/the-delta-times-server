@@ -4,6 +4,7 @@ require("./config/db");
 
 const moderatorRouter = require("./routes/moderator.route");
 const contactRouter = require("./routes/contact.route");
+const slugRouter = require("./routes/slug.route");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/news", moderatorRouter);
 app.use("/api/contacts", contactRouter);
+app.use("/api/slugs", slugRouter);
 
 // api/users : GET
 // api/users/:id : GET
