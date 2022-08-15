@@ -13,7 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/news", moderatorRouter);
 app.use("/api/contacts", contactRouter);
-app.use("/api/slugs", slugRouter);
+app.use("/api/news", slugRouter);
+
 
 // api/users : GET
 // api/users/:id : GET
