@@ -15,6 +15,7 @@ app.use("/api/news", moderatorRouter);
 app.use("/api/contacts", contactRouter);
 app.use("/api/news", slugRouter);
 
+
 // api/users : GET
 // api/users/:id : GET
 // api/users/ : POST
