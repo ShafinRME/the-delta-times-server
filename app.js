@@ -3,6 +3,7 @@ const cors = require("cors");
 require("./config/db");
 
 const moderatorRouter = require("./routes/moderator.route");
+const adminRouter = require("./routes/admin.route");
 const contactRouter = require("./routes/contact.route");
 const slugRouter = require("./routes/slug.route");
 
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/news", moderatorRouter);
+app.use("/api/adminNews", adminRouter);
 app.use("/api/contacts", contactRouter);
 app.use("/api/news", slugRouter);
 

@@ -11,6 +11,8 @@ const createNews = async (req, res) => {
             description: req.body.description,
             image: req.body.image,
             date: req.body.date,
+            breakingNews: req.body.breakingNews,
+            photo: req.body.photo,
             category: req.body.category,
             reference: req.body.reference
         })
@@ -29,6 +31,14 @@ const getAllNews = async (req, res) => {
         res.status(500).send(error.message);
     }
 };
+const getOneNews = async (req, res) => {
+    try {
+        const news = await News.findOne({ id: req.params.id });
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
 
 
 
@@ -37,7 +47,6 @@ const getTechNews = async (req, res) => {
     try {
         console.log(req);
         const query = { category: "Tech" }
-        console.log("query log", query)
         const news = await News.find(query);
         res.status(200).json(news);
     } catch (error) {
@@ -90,6 +99,8 @@ const updateNews = async (req, res) => {
         news.description = req.body.description;
         news.image = req.body.image;
         news.date = req.body.date;
+        news.photo = req.body.photo;
+        news.breakingNews = req.body.breakingNews;
         news.category = req.body.category;
         news.reference = req.body.title;
         await news.save();
@@ -110,4 +121,4 @@ const deleteNews = async (req, res) => {
     }
 };
 
-module.exports = { getAllNews, createNews, updateNews, deleteNews, getSportsNews, getInternationalNews, getTechNews, getHealthNews, getBusinessNews };
+module.exports = { getAllNews, getOneNews, createNews, updateNews, deleteNews, getSportsNews, getInternationalNews, getTechNews, getHealthNews, getBusinessNews };
