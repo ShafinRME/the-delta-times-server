@@ -2,10 +2,22 @@ const { v4: uuidv4 } = require("uuid");
 const AdminNews = require("../models/admin.news.model");
 
 const getAllAdminNews = async (req, res) => {
-    res.status(201).json({
-        message: "Get many  user",
-    });
+    try {
+        const adminNews = await AdminNews.find();
+        res.status(200).json(adminNews);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
 }
+
+const getOneAdminNews = async (req, res) => {
+    try {
+        const adminNews = await AdminNews.findOne({ id: req.params.id });
+        res.status(200).json(adminNews);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
 
 const createAdminNews = async (req, res) => {
     try {
@@ -15,6 +27,8 @@ const createAdminNews = async (req, res) => {
             slug: req.body.slug,
             description: req.body.description,
             image: req.body.image,
+            photo: req.body.photo,
+            breakingNews: req.body.breakingNews,
             date: req.body.date,
             category: req.body.category,
             reference: req.body.reference
@@ -33,6 +47,8 @@ const updateAdminNews = async (req, res) => {
         news.slug = req.body.slug;
         news.description = req.body.description;
         news.image = req.body.image;
+        news.breakingNews = req.body.breakingNews;
+        news.photo = req.body.photo;
         news.date = req.body.date;
         news.category = req.body.category;
         news.reference = req.body.title;
@@ -44,4 +60,13 @@ const updateAdminNews = async (req, res) => {
 
 };
 
-module.exports = { getAllAdminNews, createAdminNews, updateAdminNews };
+const deleteAdminNews = async (req, res) => {
+    try {
+        await AdminNews.deleteOne({ id: req.params.id });
+        req.status(200).json({ message: "News is Deleted from Database" });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+
+module.exports = { getAllAdminNews, getOneAdminNews, createAdminNews, updateAdminNews, deleteAdminNews };

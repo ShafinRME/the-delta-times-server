@@ -22,6 +22,12 @@ const newsSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    photo: {
+        type: String,
+    },
+    breakingNews: {
+        type: String,
+    },
     date: {
         type: String,
         require: true
