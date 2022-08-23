@@ -5,7 +5,8 @@ const createContacts = async (req, res) => {
     try {
         const newContacts = new Contacts({
             id: uuidv4(),
-            name: req.body.name,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             phone: Number(req.body.phone),
             email: req.body.email,
             description: req.body.description,

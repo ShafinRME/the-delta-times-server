@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 
 
-const { getAllNews, createNews, deleteNews, updateNews, getSportsNews, getHealthNews, getInternationalNews, getTechNews, getBusinessNews } = require("../controllers/moderator.controller");
+const { getAllNews, getOneNews, createNews, deleteNews, updateNews, getSportsNews, getHealthNews, getInternationalNews, getTechNews, getBusinessNews } = require("../controllers/moderator.controller");
 
-// const { getOneNews } = require("../controllers/slug.controller");
 
 
 router.get("/", getAllNews);
-// router.get("/:slug", getOneNews);
+router.get("/:id", getOneNews);
 router.get("/tech", getTechNews);
 router.get("/international", getInternationalNews);
 router.get("/sports", getSportsNews);
