@@ -14,10 +14,11 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/news", moderatorRouter);
-app.use("/api/adminNews", adminRouter);
 app.use("/api/contacts", contactRouter);
 app.use("/api/news", slugRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/adminNews", adminRouter);
+
 
 // api/users : GET
 // api/users/:id : GET

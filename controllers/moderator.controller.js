@@ -13,6 +13,7 @@ const createNews = async (req, res) => {
             date: req.body.date,
             breakingNews: req.body.breakingNews,
             photo: req.body.photo,
+            subCategory: req.body.subCategory,
             category: req.body.category,
             reference: req.body.reference
         })
@@ -31,21 +32,9 @@ const getAllNews = async (req, res) => {
         res.status(500).send(error.message);
     }
 };
-const getOneNews = async (req, res) => {
-    try {
-        const news = await News.findOne({ id: req.params.id });
-        res.status(200).json(news);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-};
-
-
-
 
 const getTechNews = async (req, res) => {
     try {
-        console.log(req);
         const query = { category: "Tech" }
         const news = await News.find(query);
         res.status(200).json(news);
@@ -53,6 +42,28 @@ const getTechNews = async (req, res) => {
         res.status(500).send(error.message);
     }
 };
+
+const getBreakingNews = async (req, res) => {
+    try {
+        const query = { breakingNews: "Yes" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+
+
+const getPhotos = async (req, res) => {
+    try {
+        const query = { photo: "Yes" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+
 const getInternationalNews = async (req, res) => {
     try {
         const query = { category: "International" }
@@ -101,6 +112,7 @@ const updateNews = async (req, res) => {
         news.date = req.body.date;
         news.photo = req.body.photo;
         news.breakingNews = req.body.breakingNews;
+        news.subCategory = req.body.subCategory;
         news.category = req.body.category;
         news.reference = req.body.title;
         await news.save();
@@ -121,4 +133,6 @@ const deleteNews = async (req, res) => {
     }
 };
 
-module.exports = { getAllNews, getOneNews, createNews, updateNews, deleteNews, getSportsNews, getInternationalNews, getTechNews, getHealthNews, getBusinessNews };
+
+
+module.exports = { getAllNews, createNews, updateNews, deleteNews, getBreakingNews, getSportsNews, getInternationalNews, getTechNews, getHealthNews, getBusinessNews, getPhotos };
