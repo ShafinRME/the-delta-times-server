@@ -21,27 +21,8 @@ const getOneUser = async (req, res) => {
   }
 };
 
+// update one user
 const putOneUser = async (req, res) => {
-  // try {
-  //   const user = await Users.findOneAndUpdate(
-  //     { email: req.params.email },
-  //     {
-  //       upsert: true,
-  //       new: true,
-  //     },
-  //     (err, data) => {
-  //       if (err) {
-  //         console.log(error);
-  //       } else {
-  //         console.log(data);
-  //       }
-  //     }
-  //   );
-  //   res.status(200).json(user);
-  // } catch (error) {
-  //   res.status(500).send(error.message);
-  // }
-
   try {
     const email = req.params.email;
     const user = req.body;
@@ -60,4 +41,14 @@ const putOneUser = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getOneUser, putOneUser };
+// delete user per user
+const deleteUser = async (req, res) => {
+  try {
+    await Users.deleteOne({ email: req.params.email });
+    req.status(200).json({ message: "User is Deleted from Database" });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+module.exports = { getAllUsers, getOneUser, putOneUser, deleteUser };
