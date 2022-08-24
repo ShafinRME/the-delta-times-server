@@ -28,6 +28,9 @@ const newsSchema = mongoose.Schema({
     breakingNews: {
         type: String,
     },
+    subCategory: {
+        type: String,
+    },
     date: {
         type: String,
         require: true
