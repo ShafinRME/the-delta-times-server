@@ -28,6 +28,7 @@ const createAdminNews = async (req, res) => {
             description: req.body.description,
             image: req.body.image,
             photo: req.body.photo,
+            subCategory: req.body.subCategory,
             breakingNews: req.body.breakingNews,
             date: req.body.date,
             category: req.body.category,
@@ -48,6 +49,7 @@ const updateAdminNews = async (req, res) => {
         news.description = req.body.description;
         news.image = req.body.image;
         news.breakingNews = req.body.breakingNews;
+        news.subCategory = req.body.subCategory;
         news.photo = req.body.photo;
         news.date = req.body.date;
         news.category = req.body.category;
