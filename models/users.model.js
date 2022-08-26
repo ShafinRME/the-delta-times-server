@@ -5,6 +5,14 @@ const usersSchema = mongoose.Schema({
     type: String,
     require: true,
   },
+  name: {
+    type: String,
+    require: true,
+  },
+  role: {
+    type: String,
+    require: true,
+  },
 });
 
 module.exports = mongoose.model("Users", usersSchema);
