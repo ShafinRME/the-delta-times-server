@@ -1,4 +1,5 @@
 const Users = require("../models/users.model");
+const jwt = require('jsonwebtoken')
 
 //get all user
 const getAllUsers = async (req, res) => {
@@ -32,15 +33,29 @@ const putOneUser = async (req, res) => {
       $set: user,
     };
     const result = await Users.updateOne(filter, updateDoc, options);
-    // const token = jwt.sign({ email: email }, process.env.ACCESS_TOKEN_SECRET, {
-    //   expiresIn: "12h",
-    // });
-    res.status(200).json(user);
+    const token = jwt.sign({ email: email }, process.env.ACCESS_TOKEN_SECRET, {
+      expiresIn: "12h",
+    });
+    res.status(200).json({user,token});
   } catch (error) {
     res.status(500).send(error.message);
   }
 };
 
+// make admin
+const makeAdmin = async (req, res) => {
+  try {
+    const email = req.params.email;
+    const filter = { email: email };
+    const updateDoc = {
+      $set: { role: "admin" },
+    };
+    const result = await Users.updateOne(filter, updateDoc);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
 // delete user per user
 const deleteUser = async (req, res) => {
   try {
@@ -51,4 +66,4 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getOneUser, putOneUser, deleteUser };
+module.exports = { getAllUsers, getOneUser, putOneUser, deleteUser, makeAdmin };

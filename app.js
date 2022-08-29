@@ -1,5 +1,7 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 const cors = require("cors");
+require("dotenv").config();
 require("./config/db");
 
 const moderatorRouter = require("./routes/moderator.route");
@@ -18,7 +20,6 @@ app.use("/api/contacts", contactRouter);
 app.use("/api/news", slugRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/adminNews", adminRouter);
-
 
 // api/users : GET
 // api/users/:id : GET
