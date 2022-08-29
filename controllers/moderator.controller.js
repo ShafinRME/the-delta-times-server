@@ -31,15 +31,6 @@ const getAllNews = async (req, res) => {
     res.status(500).send(error.message);
   }
 };
-const getCategoryNews = async (req, res) => {
-  try {
-    const query = { category: req.params.category };
-    const news = await News.find(query);
-    res.status(200).json(news);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-};
 
 const getTechNews = async (req, res) => {
   try {
@@ -54,16 +45,6 @@ const getTechNews = async (req, res) => {
 const getBreakingNews = async (req, res) => {
   try {
     const query = { breakingNews: "Yes" };
-    const news = await News.find(query);
-    res.status(200).json(news);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-};
-
-const getPhotos = async (req, res) => {
-  try {
-    const query = { photo: "Yes" };
     const news = await News.find(query);
     res.status(200).json(news);
   } catch (error) {
@@ -108,6 +89,124 @@ const getBusinessNews = async (req, res) => {
   }
 };
 
+const getBooksNews = async (req, res) => {
+    try {
+        const query = { category: "Books" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getBangladeshNews = async (req, res) => {
+    try {
+        const query = { category: "Bangladesh" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getPoliticsNews = async (req, res) => {
+    try {
+        const query = { category: "Bangladesh", subCategory: "Politics" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getAccidentNews = async (req, res) => {
+    try {
+        const query = { category: "Bangladesh", subCategory: "Accident" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getCrimeNews = async (req, res) => {
+    try {
+        const query = { category: "Bangladesh", subCategory: "Crime" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getAsiaNews = async (req, res) => {
+    try {
+        const query = { category: "International", subCategory: "Asia" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getEuropeNews = async (req, res) => {
+    try {
+        const query = { category: "International", subCategory: "Europe" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getAmericaNews = async (req, res) => {
+    try {
+        const query = { category: "International", subCategory: "America" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getCricketNews = async (req, res) => {
+    try {
+        const query = { category: "Sports", subCategory: "Cricket" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getFootballNews = async (req, res) => {
+    try {
+        const query = { category: "Sports", subCategory: "Football" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getLocalSportsNews = async (req, res) => {
+    try {
+        const query = { category: "Sports", subCategory: "Local Sports" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getLocalBusinessNews = async (req, res) => {
+    try {
+        const query = { category: "Business", subCategory: "Local Business" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getGlobalBusinessNews = async (req, res) => {
+    try {
+        const query = { category: "Business", subCategory: "Global Business" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+
 const updateNews = async (req, res) => {
   try {
     const news = await News.findOne({ id: req.params.id });
@@ -137,17 +236,5 @@ const deleteNews = async (req, res) => {
   }
 };
 
-module.exports = {
-  getAllNews,
-  createNews,
-  getCategoryNews,
-  updateNews,
-  deleteNews,
-  getBreakingNews,
-  getSportsNews,
-  getInternationalNews,
-  getTechNews,
-  getHealthNews,
-  getBusinessNews,
-  getPhotos,
-};
+module.exports = { getAllNews, createNews, updateNews, deleteNews, getBreakingNews, getSportsNews, getInternationalNews, getTechNews, getHealthNews, getBusinessNews, getAccidentNews, getAmericaNews, getBangladeshNews, getBooksNews, getCricketNews, getPoliticsNews, getLocalBusinessNews, getLocalSportsNews, getGlobalBusinessNews, getAsiaNews, getEuropeNews, getCrimeNews, getFootballNews };
+
