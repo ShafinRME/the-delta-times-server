@@ -1,5 +1,5 @@
 const Users = require("../models/users.model");
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 
 //get all user
 const getAllUsers = async (req, res) => {
@@ -36,7 +36,7 @@ const putOneUser = async (req, res) => {
     const token = jwt.sign({ email: email }, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: "12h",
     });
-    res.status(200).json({user,token});
+    res.status(200).json({ user, token });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -59,8 +59,9 @@ const makeAdmin = async (req, res) => {
 // delete user per user
 const deleteUser = async (req, res) => {
   try {
-    await Users.deleteOne({ email: req.params.email });
-    req.status(200).json({ message: "User is Deleted from Database" });
+    const result = await Users.deleteOne({ email: req.params.email });
+    console.log(req.params);
+    req.send(result);
   } catch (error) {
     res.status(500).send(error.message);
   }
