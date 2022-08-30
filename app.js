@@ -9,6 +9,7 @@ const adminNewsRouter = require("./routes/admin.route");
 const contactRouter = require("./routes/contact.route");
 const slugRouter = require("./routes/slug.route");
 const photoRouter = require("./routes/photos.route");
+const usersRouter = require("./routes/users.route");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use("/api/news", moderatorRouter);
 app.use("/api/contacts", contactRouter);
 app.use("/api/news", slugRouter);
+app.use("/api/users", usersRouter);
 app.use("/api/photos", photoRouter);
 app.use("/api/adminNews", adminNewsRouter);
 
