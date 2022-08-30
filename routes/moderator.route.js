@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const { getAllNews, createNews, deleteNews, updateNews, getSportsNews, getHealthNews, getInternationalNews, getTechNews, getBusinessNews, getBreakingNews, getAmericaNews, getAsiaNews, getEuropeNews, getBangladeshNews, getAccidentNews, getCrimeNews, getPoliticsNews, getCricketNews, getFootballNews, getGlobalBusinessNews, getLocalBusinessNews, getLocalSportsNews, getBooksNews } = require("../controllers/moderator.controller");
+const { getAllNews, createNews, deleteNews, updateNews, getSportsNews, getHealthNews, getInternationalNews, getTechNews, getBusinessNews, getBreakingNews, getAmericaNews, getAsiaNews, getEuropeNews, getBangladeshNews, getAccidentNews, getCrimeNews, getPoliticsNews, getCricketNews, getFootballNews, getGlobalBusinessNews, getLocalBusinessNews, getLocalSportsNews, getBooksNews, getCategoryNews } = require("../controllers/moderator.controller");
 
 
 router.get("/", getAllNews);
+router.get("/category/:category", getCategoryNews);
 router.get("/breakingNews", getBreakingNews);
 router.get("/tech", getTechNews);
 router.get("/books", getBooksNews);
