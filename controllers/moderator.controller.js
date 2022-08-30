@@ -26,7 +26,8 @@ const createNews = async (req, res) => {
 const getAllNews = async (req, res) => {
   try {
     const news = await News.find();
-    res.status(200).json(news);
+    const allNews = news.reverse().slice(0,70)
+    res.status(200).json(allNews);
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -36,7 +37,8 @@ const getAllNews = async (req, res) => {
 const getCategoryNews = async (req, res) => {
   try {
     const query = { category: req.params.category };
-    const news = await News.find(query);
+    const allNews= await News.find(query);
+    const news = allNews.reverse()
     res.status(200).json(news);
   } catch (error) {
     res.status(500).send(error.message);

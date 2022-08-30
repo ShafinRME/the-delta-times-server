@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require("uuid")
 const News = require("../models/moderator.news.model")
 
-const getOneeNews = async (req, res) => {
+const getIdNews = async (req, res) => {
     try {
         const news = await News.findOne({ id: req.params.id });
         res.status(200).json(news);
@@ -10,7 +10,7 @@ const getOneeNews = async (req, res) => {
     }
 };
 
-const getOneNews = async (req, res) => {
+const getSlugNews = async (req, res) => {
     try {
         const news = await News.findOne({ slug: req.params.slug })
         res.status(200).json(news);
@@ -21,4 +21,4 @@ const getOneNews = async (req, res) => {
 
 
 
-module.exports = { getOneNews, getOneeNews };
+module.exports = { getIdNews, getSlugNews };
