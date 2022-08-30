@@ -1,5 +1,7 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 const cors = require("cors");
+require("dotenv").config();
 require("./config/db");
 
 const moderatorRouter = require("./routes/moderator.route");

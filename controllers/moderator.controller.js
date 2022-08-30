@@ -26,11 +26,25 @@ const createNews = async (req, res) => {
 const getAllNews = async (req, res) => {
   try {
     const news = await News.find();
+    const allNews = news.reverse().slice(0,70)
+    res.status(200).json(allNews);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+//get category news by one api
+const getCategoryNews = async (req, res) => {
+  try {
+    const query = { category: req.params.category };
+    const allNews= await News.find(query);
+    const news = allNews.reverse()
     res.status(200).json(news);
   } catch (error) {
     res.status(500).send(error.message);
   }
 };
+
 
 const getTechNews = async (req, res) => {
   try {
@@ -236,5 +250,30 @@ const deleteNews = async (req, res) => {
   }
 };
 
-module.exports = { getAllNews, createNews, updateNews, deleteNews, getBreakingNews, getSportsNews, getInternationalNews, getTechNews, getHealthNews, getBusinessNews, getAccidentNews, getAmericaNews, getBangladeshNews, getBooksNews, getCricketNews, getPoliticsNews, getLocalBusinessNews, getLocalSportsNews, getGlobalBusinessNews, getAsiaNews, getEuropeNews, getCrimeNews, getFootballNews };
+module.exports = {
+  getAllNews,
+  createNews,
+  updateNews,
+  deleteNews,
+  getBreakingNews,
+  getSportsNews,
+  getInternationalNews,
+  getTechNews,
+  getHealthNews,
+  getBusinessNews,
+  getAccidentNews,
+  getAmericaNews,
+  getBangladeshNews,
+  getBooksNews,
+  getCricketNews,
+  getPoliticsNews,
+  getLocalBusinessNews,
+  getLocalSportsNews,
+  getGlobalBusinessNews,
+  getAsiaNews,
+  getEuropeNews,
+  getCrimeNews,
+  getFootballNews,
+  getCategoryNews,
+};
 
