@@ -8,12 +8,14 @@ const {
   putOneUser,
   deleteUser,
   makeAdmin,
+  makeModerator,
 } = require("../controllers/users.controller");
 
 router.get("/",verifyJWT, getAllUsers);
 router.get("/:email", verifyJWT,  getOneUser);
 router.put("/:email", putOneUser);
 router.put("/admin/:email", makeAdmin);
-router.delete("/:email", verifyJWT, deleteUser);
+router.put("/moderator/:email", makeModerator);
+router.delete("/:_id", verifyJWT, deleteUser);
 
 module.exports = router;
