@@ -55,15 +55,51 @@ const makeAdmin = async (req, res) => {
     res.status(500).send(error.message);
   }
 };
+// make admin
+const makeModerator= async (req, res) => {
+  try {
+    const email = req.params.email;
+    const filter = { email: email };
+    const updateDoc = {
+      $set: { role: "moderator" },
+    };
+    const result = await Users.updateOne(filter, updateDoc);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+// make General
+const makeGeneral = async (req, res) => {
+  try {
+    const email = req.params.email;
+    const filter = { email: email };
+    const updateDoc = {
+      $set: { role: "general" },
+    };
+    const result = await Users.updateOne(filter, updateDoc);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
 // delete user per user
 const deleteUser = async (req, res) => {
   try {
     const result = await Users.deleteOne({ email: req.params.email });
-    console.log(req.params);
+   
     req.send(result);
   } catch (error) {
     res.status(500).send(error.message);
   }
 };
 
-module.exports = { getAllUsers, getOneUser, putOneUser, deleteUser, makeAdmin };
+module.exports = {
+  getAllUsers,
+  getOneUser,
+  putOneUser,
+  deleteUser,
+  makeAdmin,
+  makeModerator,
+  makeGeneral,
+};
