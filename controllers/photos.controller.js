@@ -66,6 +66,24 @@ const getBusinessPhotos = async (req, res) => {
         res.status(500).send(error.message);
     }
 };
+const getEntertainmentPhotos = async (req, res) => {
+    try {
+        const query = { photo: "Yes", category: "Entertainment" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+const getEnvironmentPhotos = async (req, res) => {
+    try {
+        const query = { photo: "Yes", category: "Environment" }
+        const news = await News.find(query);
+        res.status(200).json(news);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
 
 
-module.exports = { getBangladeshPhotos, getBooksPhotos, getBusinessPhotos, getHealthPhotos, getInternationalPhotos, getSportsPhotos, getTechPhotos };
+module.exports = { getBangladeshPhotos, getBooksPhotos, getBusinessPhotos, getHealthPhotos, getInternationalPhotos, getSportsPhotos, getTechPhotos, getEntertainmentPhotos, getEnvironmentPhotos };

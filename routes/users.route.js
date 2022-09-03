@@ -10,6 +10,7 @@ const {
   makeAdmin,
   makeModerator,
   makeGeneral,
+
 } = require("../controllers/users.controller");
 
 router.get("/",verifyJWT, getAllUsers);
@@ -19,5 +20,7 @@ router.patch("/admin/:email", verifyJWT, makeAdmin);
 router.patch("/moderator/:email", verifyJWT, makeModerator);
 router.patch("/general/:email", verifyJWT, makeGeneral);
 router.delete("/:email", verifyJWT, deleteUser);
+router.delete("/:_id", verifyJWT, deleteUser);
+
 
 module.exports = router;
