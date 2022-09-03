@@ -26,7 +26,7 @@ const createNews = async (req, res) => {
 const getAllNews = async (req, res) => {
   try {
     const news = await News.find();
-    const allNews = news.reverse().slice(0, 70)
+    const allNews = news.reverse().slice(0,50)
     res.status(200).json(allNews);
   } catch (error) {
     res.status(500).send(error.message);
