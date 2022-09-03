@@ -85,12 +85,6 @@ const makeGeneral = async (req, res) => {
     res.status(500).send(error.message);
   }
 };
-// delete user per user
-const deleteUser = async (req, res) => {
-  try {
-    const result = await Users.deleteOne({ email: req.params.email });
-   
-    req.send(result);
 
 // delete user per user
 const deleteUser = async (req, res) => {
@@ -114,5 +108,5 @@ module.exports = {
   makeGeneral,
 };
 
-module.exports = { getAllUsers, getOneUser, putOneUser, deleteUser, makeAdmin,makeModerator };
+
 
