@@ -11,6 +11,7 @@ const slugRouter = require("./routes/slug.route");
 const photoRouter = require("./routes/photos.route");
 const usersRouter = require("./routes/users.route");
 
+
 const app = express();
 
 app.use(cors());
@@ -22,6 +23,7 @@ app.use("/api/news", slugRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/photos", photoRouter);
 app.use("/api/adminNews", adminNewsRouter);
+
 
 
 app.get("/", (req, res) => {
