@@ -223,7 +223,7 @@ const getGlobalBusinessNews = async (req, res) => {
 
 const getMovieNews = async (req, res) => {
   try {
-    const query = { category: "Entertainment", subCategory: "Movie" }
+    const query = { category: "Entertainment", subCategory: "Movies" }
     const news = await News.find(query);
     res.status(200).json(news);
   } catch (error) {
@@ -260,6 +260,33 @@ const getClimateNews = async (req, res) => {
 const getPollutionNews = async (req, res) => {
   try {
     const query = { category: "Environment", subCategory: "Pollution" }
+    const news = await News.find(query);
+    res.status(200).json(news);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+const getGadgetNews = async (req, res) => {
+  try {
+    const query = { category: "Tech", subCategory: "Gadgets & Apps" }
+    const news = await News.find(query);
+    res.status(200).json(news);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+const getSocialMediaNews = async (req, res) => {
+  try {
+    const query = { category: "Tech", subCategory: "Social Media" }
+    const news = await News.find(query);
+    res.status(200).json(news);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+const getItNews = async (req, res) => {
+  try {
+    const query = { category: "Tech", subCategory: "It" }
     const news = await News.find(query);
     res.status(200).json(news);
   } catch (error) {
@@ -325,6 +352,9 @@ module.exports = {
   getMusicNews,
   getTelevisionNews,
   getPollutionNews,
-  getClimateNews
+  getClimateNews,
+  getGadgetNews,
+  getSocialMediaNews,
+  getItNews
 };
 

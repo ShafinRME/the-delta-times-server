@@ -21,4 +21,6 @@ const getSlugNews = async (req, res) => {
 
 
 
+
+
 module.exports = { getIdNews, getSlugNews };
