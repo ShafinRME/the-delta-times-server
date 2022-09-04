@@ -1,13 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
-const { getAllNews, createNews, deleteNews, updateNews, getSportsNews, getHealthNews, getInternationalNews, getTechNews, getBusinessNews, getBreakingNews, getAmericaNews, getAsiaNews, getEuropeNews, getBangladeshNews, getAccidentNews, getCrimeNews, getPoliticsNews, getCricketNews, getFootballNews, getGlobalBusinessNews, getLocalBusinessNews, getLocalSportsNews, getBooksNews, getCategoryNews, getMovieNews, getMusicNews, getTelevisionNews, getClimateNews, getPollutionNews } = require("../controllers/moderator.controller");
+const { getAllNews, createNews, deleteNews, updateNews, getSportsNews, getHealthNews, getInternationalNews, getTechNews, getBusinessNews, getBreakingNews, getAmericaNews, getAsiaNews, getEuropeNews, getBangladeshNews, getAccidentNews, getCrimeNews, getPoliticsNews, getCricketNews, getFootballNews, getGlobalBusinessNews, getLocalBusinessNews, getLocalSportsNews, getBooksNews, getCategoryNews, getMovieNews, getMusicNews, getTelevisionNews, getClimateNews, getPollutionNews, getGadgetNews, getSocialMediaNews, getItNews } = require("../controllers/moderator.controller");
 
 
 router.get("/", getAllNews);
 router.get("/category/:category", getCategoryNews);
 router.get("/breakingNews", getBreakingNews);
 router.get("/tech", getTechNews);
+router.get("/gadgets", getGadgetNews);
+router.get("/socialmedia", getSocialMediaNews);
+router.get("/it", getItNews);
 router.get("/books", getBooksNews);
 router.get("/international", getInternationalNews);
 router.get("/america", getAmericaNews);
@@ -25,7 +28,7 @@ router.get("/health", getHealthNews);
 router.get("/business", getBusinessNews);
 router.get("/globalbusiness", getGlobalBusinessNews);
 router.get("/localbusiness", getLocalBusinessNews);
-router.get("/movie", getMovieNews);
+router.get("/movies", getMovieNews);
 router.get("/music", getMusicNews);
 router.get("/television", getTelevisionNews);
 router.get("/climate", getClimateNews);
