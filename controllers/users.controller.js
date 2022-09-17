@@ -70,6 +70,22 @@ const makeModerator= async (req, res) => {
     res.status(500).send(error.message);
   }
 };
+
+// make General
+const makeGeneral = async (req, res) => {
+  try {
+    const email = req.params.email;
+    const filter = { email: email };
+    const updateDoc = {
+      $set: { role: "general" },
+    };
+    const result = await Users.updateOne(filter, updateDoc);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
 // delete user per user
 const deleteUser = async (req, res) => {
   try {
@@ -82,4 +98,15 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getOneUser, putOneUser, deleteUser, makeAdmin,makeModerator };
+module.exports = {
+  getAllUsers,
+  getOneUser,
+  putOneUser,
+  deleteUser,
+  makeAdmin,
+  makeModerator,
+  makeGeneral,
+};
+
+
+
