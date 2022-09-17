@@ -8,11 +8,13 @@ const newsSchema = mongoose.Schema({
     },
     title: {
         type: String,
-        require: true
+        require: true,
+        unique: [true, 'title must be unique']
     },
     slug: {
         type: String,
-        require: true
+        require: true,
+        unique: [true, 'title must be unique']
     },
     description: {
         type: String,
