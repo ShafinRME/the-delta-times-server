@@ -14,37 +14,37 @@ const newsSchema = mongoose.Schema({
   slug: {
     type: String,
     require: true,
-    unique: [true, "title must be unique"],
+    unique: [true, "slug must be unique"],
   },
   description: {
     type: String,
     require: true,
     min: [280, "Must be 280 characters or longer"],
-    max: [280, "Must be 290 characters or lower"],
+    max: [290, "Must be 290 characters or lower"],
   },
   descriptionOne: {
     type: String,
     require: true,
     min: [280, "Must be 280 characters or longer"],
-    max: [280, "Must be 290 characters or lower"],
+    max: [290, "Must be 290 characters or lower"],
   },
   descriptionTwo: {
     type: String,
     require: true,
     min: [280, "Must be 280 characters or longer"],
-    max: [280, "Must be 290 characters or lower"],
+    max: [290, "Must be 290 characters or lower"],
   },
   descriptionThree: {
     type: String,
     require: false,
     min: [280, "Must be 280 characters or longer"],
-    max: [280, "Must be 290 characters or lower"],
+    max: [290, "Must be 290 characters or lower"],
   },
   descriptionFour: {
     type: String,
     require: false,
     min: [280, "Must be 280 characters or longer"],
-    max: [280, "Must be 290 characters or lower"],
+    max: [290, "Must be 290 characters or lower"],
   },
   image: {
     type: String,
